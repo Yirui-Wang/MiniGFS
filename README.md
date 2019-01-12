@@ -1,4 +1,4 @@
-# 199行Python代码实现Google文件系统
+# 199行Python代码实现简易Google文件系统
 
 [原文](http://clouddbs.blogspot.com/2010/11/gfs-google-file-system-in-199-lines-of.html)由John Arley在2010年发表在[Python Cloud](http://clouddbs.blogspot.com/)。本项目为Python3代码。
 
@@ -134,7 +134,7 @@ class GFSMaster:
             print(chunkloc, chunkuuid, chunk)
 ```
 
-chunkserver类是此项目中最小的。它代表在大型数据中心中运行的实际的数据服务器，连接到网络可供master和client访问。在GFS中，chunkserver相对“愚蠢”，因为它们只知道chunk，即文件数据被分解成块。它们不知道整个文件的整体情况，在文件系统中的位置，相关的元数据等。我们将这个类实现为一个简单的本地存储，可以在运行测试代码后查看目录路径“gfs/chunks”。在实际系统中，需要持久存储chunk信息以进行备份。
+GFSChunkserver类是此项目中最小的。它代表在大型数据中心中运行的实际的数据服务器，连接到网络可供master和client访问。在GFS中，chunkserver相对“愚蠢”，因为它们只知道chunk，即文件数据被分解成块。它们不知道整个文件的整体情况，在文件系统中的位置，相关的元数据等。我们将这个类实现为一个简单的本地存储，可以在运行测试代码后查看目录路径“gfs/chunks”。在实际系统中，需要持久存储chunk信息以进行备份。
 
 ```python
 class GFSChunkserver:
